@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { GwHistoryComponent } from './components/gw-history/gw-history.component';
 import { PlayerTopListComponent } from './components/player-top-list/player-top-list.component';
@@ -32,7 +34,8 @@ import { TeamTopListComponent } from './components/team-top-list/team-top-list.c
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

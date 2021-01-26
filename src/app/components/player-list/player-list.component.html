@@ -1,1 +1,5 @@
 <p>player-list works!</p>
+
+<div *ngFor="let player of playerList | async">
+    <p>{{ player.name }}</p>
+</div>
