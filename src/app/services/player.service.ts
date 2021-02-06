@@ -8,7 +8,7 @@ import { map, catchError, shareReplay } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PlayerService {
-  private proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+  private proxyUrl = '';//'https://cors-anywhere.herokuapp.com/';
   private playerListUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrOl6_y7SWwOEcXY3gUhhk4fCHF3M10DTmkNIvUqRFx38kBbEyhNujw56a7GkBGtPC2cCqmYlLYMk9/pub?gid=0&single=true&output=csv';
   private players: Player[] = [];
 

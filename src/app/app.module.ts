@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { GwHistoryComponent } from './components/gw-history/gw-history.component';
@@ -34,6 +35,7 @@ import { TeamTopListComponent } from './components/team-top-list/team-top-list.c
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    MatTableModule,
     FlexLayoutModule,
     HttpClientModule
   ],
