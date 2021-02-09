@@ -10,11 +10,11 @@ import { PlayerService } from '../../services/player.service';
 })
 export class PlayerListComponent implements OnInit {
   playerList: Observable<Player[]>;
+
   constructor(private playerService: PlayerService) {
     this.playerList = this.playerService.getPlayers(true);
    }
 
   ngOnInit(): void {
   }
-
 }
