@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { Player } from '../../models/player';
 import { PlayerService } from '../../services/player.service';
+import { WarService } from '../../services/war.service';
 
 @Component({
   selector: 'msa-player-list',
@@ -13,10 +14,13 @@ export class PlayerListComponent implements OnInit {
 
   playerList: Observable<Player[]>;
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService, private warService: WarService) {
     this.playerList = this.playerService.getPlayers(true);
    }
 
   ngOnInit(): void {
+    forkJoin(this.playerService.getPlayers(true), this.warService.getWarhistory()).subscribe(([players, history]) => {
+      debugger;
+    });
   }
 }

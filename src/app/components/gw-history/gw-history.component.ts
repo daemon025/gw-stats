@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { WarService } from '../../services/war.service';
+import { Observable } from 'rxjs';
+import { War } from '../../models/war';
 
 @Component({
   selector: 'msa-gw-history',
@@ -6,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gw-history.component.css']
 })
 export class GwHistoryComponent implements OnInit {
+  results: Observable<War[]>;
 
-  constructor() { }
+  constructor(private warService: WarService) {
+    this.results = this.warService.getWarhistory();
+   }
 
   ngOnInit(): void {
   }

@@ -1,1 +1,6 @@
-<p>gw-history works!</p>
+<table>
+    <tr *ngFor="let match of results | async">
+        <td>{{match.date}}</td>
+        <td>{{match.score}}</td>
+    </tr>
+</table>

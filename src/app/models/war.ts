@@ -6,7 +6,8 @@ export class War {
     constructor(
         public date: Date, 
         public score: number, 
-        public result: WarResult) {
+        public result: WarResult,
+        public season: number) {
     }
 
     addPlayerScore(player: Player, score: number) {

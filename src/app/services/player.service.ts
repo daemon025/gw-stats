@@ -25,6 +25,7 @@ export class PlayerService {
     }).pipe(
         shareReplay(1),
         map((response: string) => {
+          const players = [];
           const lines = response.split('\r\n');
           const header = lines[0].split(',');
 
@@ -42,9 +43,10 @@ export class PlayerService {
 
             const profileIcon = new ProfileIcon(border, color, icon);
             const player = new Player(id, name, active, profileIcon, country, difficulty);
-            this.players.push(player);
+            players.push(player);
           }
 
+          this.players = players;
           return this.players.filter(p => p.active);
         }),
         catchError((err, caught) => {
