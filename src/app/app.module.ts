@@ -11,12 +11,14 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { GwHistoryComponent } from './components/gw-history/gw-history.component';
 import { PlayerTopListComponent } from './components/player-top-list/player-top-list.component';
 import { TeamTopListComponent } from './components/team-top-list/team-top-list.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { TeamTopListComponent } from './components/team-top-list/team-top-list.c
     PlayerListComponent,
     GwHistoryComponent,
     PlayerTopListComponent,
-    TeamTopListComponent
+    TeamTopListComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { TeamTopListComponent } from './components/team-top-list/team-top-list.c
     MatButtonModule,
     MatTableModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

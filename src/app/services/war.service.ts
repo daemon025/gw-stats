@@ -34,13 +34,13 @@ export class WarService {
         const warResults: War[] = [];
         const playerScores = this.parsePlayerScores(playerScoresCsv);
         const teamScores = this.parseTeamScores(teamScoresCsv);
-
+        let id = 0;
         teamScores.forEach((ts) => {
           const date = this.parseDate(ts.day);
           const teamScore = parseInt(ts.score);
           const result = ts.result === 'win' ? WarResult.Win : WarResult.Lose;
           const season = parseInt(ts.season);
-          let war = new War(date, teamScore, result, season);
+          let war = new War(++id, date, teamScore, result, season);
 
           playerScores.filter(ps => ps.day == ts.day).forEach((ps) => {
             const score = parseInt(ps.score);

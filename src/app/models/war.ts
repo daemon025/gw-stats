@@ -4,6 +4,7 @@ export class War {
     private _scores: PlayerScore[] = [];
 
     constructor(
+        public id: number,
         public date: Date, 
         public score: number, 
         public result: WarResult,

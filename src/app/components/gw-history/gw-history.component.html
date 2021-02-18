@@ -1,6 +1,28 @@
-<table>
+<!-- <table>
     <tr *ngFor="let match of results | async">
-        <td>{{match.date}}</td>
+        <td>{{match.date | date: 'shortDate'}}</td>
         <td>{{match.score}}</td>
     </tr>
-</table>
+</table> -->
+
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let season of seasons" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Season {{ season.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{ season.wins }} - {{ season.loses }} | VP: {{ season.victoryPoints }}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-selection-list role="list">
+            <mat-list-item role="listitem" *ngFor="let match of season.matches">
+                <div class="match-container">
+                    <div class="match-outcome">{{ match.result == 1 ? 'WIN' : 'LOST' }} VS </div>
+                    <div class="match-date">Opponent<br/>{{ match.date | date: 'shortDate' }}</div>
+                    <div class="match-score">Score<br/>{{ match.score }}</div>
+                </div>
+            </mat-list-item>
+        </mat-selection-list>
+    </mat-expansion-panel>
+</mat-accordion>
