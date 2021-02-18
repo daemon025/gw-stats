@@ -16,7 +16,7 @@ export class PlayerService {
 
   getPlayers(onlyActive: boolean): Observable<Player[]> {
     if (this.players.length > 0)
-      return of(this.players.filter(p => p.active));
+      return of(onlyActive ? this.players.filter(p => p.active) : this.players);
 
     const requestUrl = `${this.proxyUrl}${this.playerListUrl}`;
 
@@ -47,7 +47,7 @@ export class PlayerService {
           }
 
           this.players = players;
-          return this.players.filter(p => p.active);
+          return onlyActive ? this.players.filter(p => p.active) : this.players;
         }),
         catchError((err, caught) => {
           console.log(err);

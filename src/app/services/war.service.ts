@@ -36,7 +36,7 @@ export class WarService {
         const teamScores = this.parseTeamScores(teamScoresCsv);
 
         teamScores.forEach((ts) => {
-          const date = new Date(ts.day);
+          const date = this.parseDate(ts.day);
           const teamScore = parseInt(ts.score);
           const result = ts.result === 'win' ? WarResult.Win : WarResult.Lose;
           const season = parseInt(ts.season);
@@ -61,6 +61,13 @@ export class WarService {
         console.log(err);
         return empty();
       }));
+  }
+
+  private parseDate(day: string): Date {
+    const dateParts = day.split('/');
+    return new Date(parseInt(dateParts[2], 10),
+      parseInt(dateParts[1], 10) - 1,
+      parseInt(dateParts[0], 10));
   }
 
   private parsePlayerScores(playerScoresCsv: string): PlayerScoreCsvModel[] {

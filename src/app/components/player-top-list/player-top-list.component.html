@@ -1,1 +1,8 @@
 <p>player-top-list works!</p>
+<table>
+    <tr *ngFor="let record of topScores">
+        <td>{{record.place}}</td>
+        <td>{{record.player}}</td>
+        <td>{{record.score}}</td>
+    </tr>
+</table>
