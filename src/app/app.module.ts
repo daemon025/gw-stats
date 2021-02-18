@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { PlayerListComponent } from './components/player-list/player-list.component';
 import { GwHistoryComponent } from './components/gw-history/gw-history.component';
@@ -41,7 +42,8 @@ import { PlayerComponent } from './components/player/player.component';
     MatTableModule,
     FlexLayoutModule,
     HttpClientModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

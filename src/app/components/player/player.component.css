@@ -1,0 +1,19 @@
+.generic-info {
+    width: 100%;
+    background-color: blueviolet;
+}
+
+.day-statistics {
+    width: 100%;
+    background-color: brown;
+}
+
+.chart-container {
+    width: 100%;
+    background-color: chartreuse;
+}
+
+.stats-container {
+    width: 100%;
+    background-color: coral;
+}
