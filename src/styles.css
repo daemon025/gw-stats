@@ -1,18 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { 
-    margin: 0; 
-    font-family: Roboto, "Helvetica Neue", sans-serif; 
-    width:100%;
-    overflow-x:hidden;
-    overflow-y:hidden;
+html,
+body {
+    height: 100%;
 }
 
-.mat-row:nth-child(even){
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.mat-row:nth-child(even) {
     background-color: #f5f5f5;
 }
-        
-.mat-row:nth-child(odd){
-    background-color: #808080;
+
+.mat-row:nth-child(odd) {
+    background-color: #DBDBDB;
 }
