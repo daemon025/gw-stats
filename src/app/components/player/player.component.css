@@ -1,19 +1,43 @@
-.generic-info {
+.grid-container {
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.grid-container>div {
+    display: flex;
+    flex-basis: calc(50% - 40px);
+    justify-content: center;
+    flex-direction: column;
+}
+
+.grid-container div.margin-20 {
+    margin: 20px;
+}
+
+.grid-container>div>div {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.grid-container .generic-info {
     width: 100%;
     background-color: blueviolet;
 }
 
-.day-statistics {
+.grid-container .day-statistics {
     width: 100%;
     background-color: brown;
 }
 
-.chart-container {
+.grid-container .chart-container {
     width: 100%;
     background-color: chartreuse;
 }
 
-.stats-container {
+.grid-container .stats-container {
     width: 100%;
     background-color: coral;
 }
