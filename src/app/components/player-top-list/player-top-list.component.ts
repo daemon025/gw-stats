@@ -10,6 +10,7 @@ import { PlayerScore } from '../../models/war';
 })
 export class PlayerTopListComponent implements OnInit {
   topScores: any[] = [];
+  displayedColumns: string[] = ['place', 'player', 'score'];
 
   constructor(private warService: WarService) {
   }
