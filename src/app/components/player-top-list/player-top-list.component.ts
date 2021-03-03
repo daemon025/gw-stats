@@ -32,7 +32,7 @@ export class PlayerTopListComponent implements OnInit {
         }
 
         if (place <= scoresToTake) {
-          topScores.push({ place: place, player: ps.player.name, score: ps.score });
+          topScores.push({ place: place, player: ps.player.name, score: ps.score, countryCode: ps.player.countryCode.toLocaleLowerCase() });
         }
       });
 

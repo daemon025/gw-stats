@@ -1,8 +1,56 @@
-table {
-    width: 100%;
+table th {
+    padding: 0.8rem;
 }
 
-.table-container {
-    height: calc(100% - 64px);
-    overflow: auto;
+table td {
+    padding: 0.8rem;
+    font-size: 16px;
+}
+
+.place-container {
+    padding: 0.8rem;
+}
+
+.place-container .place {
+    display: inline-flex;
+    border-radius: 50%;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: rgb(0 0 0 / 20%);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    position: relative;
+    border: 2px solid rgb(0 0 0 / 20%);
+}
+
+.place-container .place:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.15;
+    border-radius: 50%;
+}
+
+.place.place-first {
+    background: #f5cd75 !important;
+}
+
+.place.place-second {
+    background: rgb(0 0 0 / 60%) !important;
+}
+
+.place.place-third {
+    background: #c6906b !important;
+}
+
+.player-name {
+    font-size: 16px;
+    line-height: normal;
+    font-weight: 500;
+    padding-left: 0.2rem;
 }
