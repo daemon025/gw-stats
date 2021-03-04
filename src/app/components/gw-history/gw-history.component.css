@@ -5,12 +5,22 @@
 
 .match-container .match-outcome {
     flex: 1;
+    /* color: white; */
 }
 
 .match-container .match-date {
     flex: 2;
+    /* color: white; */
 }
 
 .match-container .match-score {
     flex: 1;
+}
+
+.match-container .match-score .outcome-win {
+    color: #6A8A5A;
+}
+
+.match-container .match-score .outcome-lose {
+    color: #8A4F50;
 }

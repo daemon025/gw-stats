@@ -13,6 +13,7 @@ export class GwHistoryComponent implements OnInit, OnDestroy {
   resultsSub$: Subscription;
   seasons: SeasonStats[] =[];
   results: War[] =[];
+  outcomeTypes = WarResult;
 
   constructor(private warService: WarService) { 
     this.resultsSub$ = this.warService.getWarhistory().subscribe(r => {

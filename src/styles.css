@@ -29,3 +29,7 @@ table {
     height: calc(100% - 64px);
     overflow: auto;
 }
+
+.mat-expansion-panel-content {
+    background-color: #DADADA;
+}
