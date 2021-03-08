@@ -29,7 +29,7 @@ export class PlayerListComponent implements OnInit {
         const total = wins + loses;
         const winrate = total > 0 ? Math.round(wins / (total) * 100) : 0;
 
-        const player = new PlayerListModel(p.countryCode, p.name, wins, loses, winrate);
+        const player = new PlayerListModel(p.countryCode, p.name, wins, loses, winrate, p.profileIcon);
         data.push(player);
       });
       this.playerList = data.sort((a,b) => b.winrate - a.winrate);
