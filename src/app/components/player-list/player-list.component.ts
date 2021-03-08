@@ -26,7 +26,8 @@ export class PlayerListComponent implements OnInit {
       players.forEach(p => {
         const wins = history.filter(h => h.result == WarResult.Win && h.participants.some(pr => pr.player.name == p.name)).length;
         const loses = history.filter(h => h.result == WarResult.Lose && h.participants.some(pr => pr.player.name == p.name)).length;
-        const winrate = Math.round(wins / (wins + loses) * 100);
+        const total = wins + loses;
+        const winrate = total > 0 ? Math.round(wins / (total) * 100) : 0;
 
         const player = new PlayerListModel(p.countryCode, p.name, wins, loses, winrate);
         data.push(player);
