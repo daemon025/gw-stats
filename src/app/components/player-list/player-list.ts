@@ -1,3 +1,5 @@
+import { ProfileIcon } from "../../models/player";
+
 export class PlayerListModel {
     /**
      *
@@ -8,7 +10,8 @@ export class PlayerListModel {
         public wins: number,
         public loses: number,
         public winrate: number,
-        public winStreak: number) {
+        public winStreak: number,
+        public icon: ProfileIcon) {
         this.countryCode = countryCode.toLocaleLowerCase();
     }
 }

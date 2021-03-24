@@ -20,6 +20,7 @@ import { GwHistoryComponent } from './components/gw-history/gw-history.component
 import { PlayerTopListComponent } from './components/player-top-list/player-top-list.component';
 import { TeamTopListComponent } from './components/team-top-list/team-top-list.component';
 import { PlayerComponent } from './components/player/player.component';
+import { ProfileIconComponent } from './components/profile-icon/profile-icon.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PlayerComponent } from './components/player/player.component';
     GwHistoryComponent,
     PlayerTopListComponent,
     TeamTopListComponent,
-    PlayerComponent
+    PlayerComponent,
+    ProfileIconComponent
   ],
   imports: [
     BrowserModule,
