@@ -1,38 +1,44 @@
 <div class="table-container mat-elevation-z8">
-  <table mat-table [dataSource]="playerList">
-    <!-- CountryCode Column -->
-    <ng-container matColumnDef="countryCode">
-      <th mat-header-cell *matHeaderCellDef> Country </th>
-      <td mat-cell *matCellDef="let element">
-        <span class="flag-icon flag-icon-{{element.countryCode.toLowerCase()}} flag-icon-squared"></span>
-      </td>
-    </ng-container>
+    <table mat-table [dataSource]="playerList">
+        <!-- CountryCode Column -->
+        <ng-container matColumnDef="countryCode">
+            <th mat-header-cell *matHeaderCellDef> Country </th>
+            <td mat-cell *matCellDef="let element">
+                <span class="flag-icon flag-icon-{{element.countryCode.toLowerCase()}} flag-icon-squared"></span>
+            </td>
+        </ng-container>
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
 
-    <!-- Wins Column -->
-    <ng-container matColumnDef="wins">
-      <th mat-header-cell *matHeaderCellDef> Wins </th>
-      <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
-    </ng-container>
+        <!-- Wins Column -->
+        <ng-container matColumnDef="wins">
+            <th mat-header-cell *matHeaderCellDef> Wins </th>
+            <td mat-cell *matCellDef="let element"> {{element.wins}} </td>
+        </ng-container>
 
-    <!-- Loses Column -->
-    <ng-container matColumnDef="loses">
-      <th mat-header-cell *matHeaderCellDef> Loses </th>
-      <td mat-cell *matCellDef="let element"> {{element.loses}} </td>
-    </ng-container>
+        <!-- Loses Column -->
+        <ng-container matColumnDef="loses">
+            <th mat-header-cell *matHeaderCellDef> Loses </th>
+            <td mat-cell *matCellDef="let element"> {{element.loses}} </td>
+        </ng-container>
 
-    <!-- Winrate Column -->
-    <ng-container matColumnDef="winrate">
-      <th mat-header-cell *matHeaderCellDef> Winrate </th>
-      <td mat-cell *matCellDef="let element"> {{element.winrate}}% </td>
-    </ng-container>
+        <!-- Winrate Column -->
+        <ng-container matColumnDef="winrate">
+            <th mat-header-cell *matHeaderCellDef> Winrate </th>
+            <td mat-cell *matCellDef="let element"> {{element.winrate}}% </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+        <!-- Winstreak Column -->
+        <ng-container matColumnDef="winstreak">
+            <th mat-header-cell *matHeaderCellDef> Streak </th>
+            <td mat-cell *matCellDef="let element"> {{element.winStreak}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
 </div>
