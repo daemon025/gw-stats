@@ -40,7 +40,7 @@ export class PlayerListComponent implements OnInit {
   private calculateWinStreak(history: War[], player: Player): number {
     let streak = 0;
     const playerHistory = history.filter(h => h.participants.some(pr => pr.player.id == player.id));
-    for(let i = playerHistory.length - 1; i > 0; i--) {
+    for(let i = playerHistory.length - 1; i >= 0; i--) {
       if(playerHistory[i].result == WarResult.Win) {
         streak++;
       } else {
