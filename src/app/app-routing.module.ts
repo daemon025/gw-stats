@@ -5,6 +5,7 @@ import { GwHistoryComponent } from './components/gw-history/gw-history.component
 import { PlayerTopListComponent } from './components/player-top-list/player-top-list.component';
 import { TeamTopListComponent } from './components/team-top-list/team-top-list.component';
 import { PlayerComponent } from './components/player/player.component';
+import { PlayerTierListComponent } from './components/player-tier-list/player-tier-list.component';
 
 const routes: Routes = [
   { path: '', component: PlayerListComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'gw-history', component: GwHistoryComponent },
   { path: 'player-top', component: PlayerTopListComponent },
   { path: 'team-top', component: TeamTopListComponent },
-  { path: 'player/:id', component: PlayerComponent }
+  { path: 'player/:id', component: PlayerComponent },
+  { path: 'player-tier-list', component: PlayerTierListComponent }
 ];
 
 @NgModule({

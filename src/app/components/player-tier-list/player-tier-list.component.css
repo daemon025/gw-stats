@@ -1,0 +1,9 @@
+.survivor-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    background-color: #241F1D;
+    height: calc(100% - 64px);
+    overflow: auto;
+    align-content: flex-start;
+}

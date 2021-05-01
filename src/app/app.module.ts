@@ -21,6 +21,9 @@ import { PlayerTopListComponent } from './components/player-top-list/player-top-
 import { TeamTopListComponent } from './components/team-top-list/team-top-list.component';
 import { PlayerComponent } from './components/player/player.component';
 import { ProfileIconComponent } from './components/profile-icon/profile-icon.component';
+import { PlayerTierListComponent } from './components/player-tier-list/player-tier-list.component';
+import { SurvivorComponent } from './components/player-tier-list/survivor/survivor.component';
+import { SurvivorPipe } from './components/player-tier-list/survivor.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { ProfileIconComponent } from './components/profile-icon/profile-icon.com
     PlayerTopListComponent,
     TeamTopListComponent,
     PlayerComponent,
-    ProfileIconComponent
+    ProfileIconComponent,
+    PlayerTierListComponent,
+    SurvivorComponent,
+    SurvivorPipe
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+<div *ngIf="survivor" class="survivor-panel" [class]="survivor.rarityColor">
+    <div class="top-badge-container">
+
+    </div>
+    <div class="header">
+        <div class="survivor-class">
+            <profile-icon [icon]=survivor.profileIcon></profile-icon>
+            <!-- <img [src]="survivor.profileIcon" /> -->
+        </div>
+        <div class="survivor-name">
+            <span style="padding-right: 5px;"> {{ survivor.name }} </span>
+        </div>
+    </div>
+    <div class="body" [ngStyle]="{'background-image': getUrl(survivor), 'background-size': 'contain'}">
+        <div class="level-container">
+            <div class="level"><span class="flag-icon flag-icon-{{survivor.country}} flag-icon-squared"></span></div>
+            <div class="stars">
+                <mat-icon *ngFor="let color of survivor.starColors" [class]="color">star_rate</mat-icon>
+            </div>
+        </div>
+        <!-- <div class="stats-container">
+            <img src="https://cdn-5ce4a003f911c80f50818892.closte.com/wp-content/uploads/2010/10/pure-css-progress-bar.png" width="160px" height="24px" />
+        </div> -->
+    </div>
+    <div class="footer">
+        <!-- <div class="survivor-trait" *ngFor="let trait of survivor.traits">
+            <img [src]="trait.survivorTraitIcon" />
+        </div> -->
+    </div>
+</div>
