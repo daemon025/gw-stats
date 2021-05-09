@@ -1,6 +1,7 @@
 import { ProfileIcon } from "../../../models/player";
 
 export class Survivor {
+    id: number;
     name: string;
     image: string;
     country: string;
@@ -9,7 +10,8 @@ export class Survivor {
     team: number;
     avg: number;
 
-    constructor(name: string, country: string, rarity: number, profileIcon: ProfileIcon, team: number, avg: number) {
+    constructor(id: number, name: string, country: string, rarity: number, profileIcon: ProfileIcon, team: number, avg: number) {
+        this.id = id;
         this.name = name;
         this.country = country.toLowerCase();
         this.rarity =  (rarity >= 0 ? rarity : 0) as SurvivorRarity;

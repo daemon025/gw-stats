@@ -5,6 +5,7 @@ export class PlayerListModel {
      *
      */
     constructor(
+        public id: number,
         public countryCode: string,
         public name: string,
         public wins: number,

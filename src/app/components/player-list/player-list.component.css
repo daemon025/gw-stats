@@ -6,3 +6,7 @@ table {
     height: calc(100% - 64px);
     overflow: auto;
 }
+
+.flag-container {
+    padding-right: 0.2rem;
+}

@@ -4,6 +4,7 @@ import { WarService } from '../../services/war.service';
 import { forkJoin } from 'rxjs';
 import { Survivor } from './survivor/survivor';
 import { WarResult, PlayerScore } from '../../models/war';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-tier-list',
@@ -11,14 +12,14 @@ import { WarResult, PlayerScore } from '../../models/war';
   styleUrls: ['./player-tier-list.component.css']
 })
 export class PlayerTierListComponent implements OnInit {
-  private readonly team1 = [''];
   private readonly LastResultsToTake = 2;
-  private readonly AdjustingNumber = 15;
+  private readonly AdjustingNumber = 0;
+
   survivors: Survivor[];
-  constructor(private playerService: PlayerService, private warService: WarService) { }
+  constructor(private playerService: PlayerService, private warService: WarService, private router: Router) { }
 
   ngOnInit(): void {
-    forkJoin(this.playerService.getPlayers(false), this.warService.getWarhistory()).subscribe(([players, history]) => {
+    forkJoin(this.playerService.getPlayers(true), this.warService.getWarhistory()).subscribe(([players, history]) => {
       let data: Survivor[] = [];
       players.forEach(p => {
         const battles = history.filter(h => h.result == WarResult.Win && h.participants.some(pr => pr.player.id == p.id));
@@ -30,12 +31,15 @@ export class PlayerTierListComponent implements OnInit {
 
         const rarity = Math.floor(avg / 100) - 1;
         console.log(`Player: ${p.name} with average score of ${avg} has ${rarity} stars...`);
-        const team = this.team1.indexOf(p.name) != -1 ? 1 : 2;
-        const player = new Survivor(p.name, p.countryCode, rarity, p.profileIcon, team, avg);
+        const team = 0;
+        const player = new Survivor(p.id, p.name, p.countryCode, rarity, p.profileIcon, team, avg);
         data.push(player);
       });
       this.survivors = data;
     });
   }
 
+  openPlayerProfile(playerId: number) {
+    this.router.navigateByUrl(`/player/${playerId}`);
+  }
 }
