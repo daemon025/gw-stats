@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerStats } from '../models/player-stats';
+import { PlayerStats, TeammateStats } from '../models/player-stats';
 import { Player } from '../models/player';
 import { War, WarResult } from '../models/war';
 
@@ -24,9 +24,11 @@ export class PlayerStatsService {
     stats.resultOnSat = this.statsByDay(playerBattles, 6);
     stats.resultOnSun = this.statsByDay(playerBattles, 0);
 
+    stats.teammateStats = this.getTeammateStats(player, playerBattles);
+
     return stats;
   }
-
+  
   private calculateWinStreak(history: War[], player: Player): number {
     let streak = 0;
     const playerHistory = history.filter(h => h.participants.some(pr => pr.player.id == player.id));
@@ -46,5 +48,24 @@ export class PlayerStatsService {
     const loses = history.filter(r => r.date.getDay() == day && r.result == WarResult.Lose).length;
     
     return `${wins}-${loses}`;
+  }
+
+  getTeammateStats(player: Player, playerBattles: War[]): TeammateStats[] {
+    let teammates: TeammateStats[] = [];
+
+    playerBattles.forEach(pb => {
+      pb.participants.filter(p => p.player.id != player.id).forEach(p => {
+        
+        let teammate = teammates.find(t => t.player.id == p.player.id); 
+        if(!teammate) {
+          teammate = new TeammateStats(p.player);
+          teammates.push(teammate);
+        } 
+
+        teammate.addGame(pb.result);
+      });
+    });
+
+    return teammates;
   }
 }

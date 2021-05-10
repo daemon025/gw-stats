@@ -8,6 +8,37 @@
         <div>Current streak: {{player.stats.winStreak}}</div>
         <div>[Tue] {{player.stats.resultOnTue}} [Wed] {{player.stats.resultOnWed}} [Thu] {{player.stats.resultOnThu}}</div>
         <div>[Fri] {{player.stats.resultOnFri}} [Sat] {{player.stats.resultOnSat}} [Sun] {{player.stats.resultOnSun}}</div>
+        <br/>
+        <br/>
+        <div>
+            <div style="padding: 4px;">
+                <table>
+                    <thead>
+                        <th>Player</th>
+                        <th>Total games</th>
+                        <th>Winrate</th>
+                    </thead>
+                    <tbody>
+                        <tr class="bordered">
+                            <td style="text-align: right;border-bottom: solid 1px;border-top: solid 1px;" colspan="3" class="subheading-2">Top 5 teammates by winrate</td>
+                        </tr>
+                        <tr class="bordered" *ngFor="let teammate of player.stats.top3TeammatesByWinrate">
+                            <td style="text-align: right;">{{teammate.player.name}}</td>
+                            <td style="text-align: right;">{{teammate.totalGames}}</td>
+                            <td style="text-align: right;">{{teammate.winrate}}%</td>
+                        </tr>
+                        <tr class="bordered">
+                            <td style="text-align: right;border-bottom: solid 1px;border-top: solid 1px;" colspan="3" class="subheading-2">Top 5 teammates by games played</td>
+                        </tr>
+                        <tr class="bordered" *ngFor="let teammate of player.stats.top3TeammatesByGamesPlayed">
+                            <td style="text-align: right;">{{teammate.player.name}}</td>
+                            <td style="text-align: right;">{{teammate.totalGames}}</td>
+                            <td style="text-align: right;">{{teammate.winrate}}%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <div class="margin-20 day-statistics">
         <div>2</div>

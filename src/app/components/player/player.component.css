@@ -44,3 +44,7 @@
     width: 100%;
     background-color: coral;
 }
+
+.bordered {
+    border: solid 1px white;
+}
