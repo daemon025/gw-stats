@@ -19,7 +19,7 @@
             <mat-list-item role="listitem" *ngFor="let match of season.matches">
                 <div class="match-container">
                     <div class="match-outcome">{{ match.date | date: 'shortDate' }}</div>
-                    <div class="match-date">Opponent</div>
+                    <div class="match-date">{{ match.opponent }}</div>
                     <div class="match-score">
                         <span [ngClass]="{ 'outcome-win': outcomeTypes.Win === match.result, 'outcome-lose': outcomeTypes.Lose === match.result  }">{{ match.score }}</span>
                     </div>

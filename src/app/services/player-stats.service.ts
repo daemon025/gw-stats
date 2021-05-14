@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerStats, TeammateStats } from '../models/player-stats';
+import { PlayerStats, TeammateStats, OpponentStats } from '../models/player-stats';
 import { Player } from '../models/player';
 import { War, WarResult } from '../models/war';
 
@@ -25,9 +25,11 @@ export class PlayerStatsService {
     stats.resultOnSun = this.statsByDay(playerBattles, 0);
 
     stats.teammateStats = this.getTeammateStats(player, playerBattles);
+    stats.opponentStats = this.getOpponentStats(playerBattles);
 
     return stats;
   }
+  
   
   private calculateWinStreak(history: War[], player: Player): number {
     let streak = 0;
@@ -46,11 +48,11 @@ export class PlayerStatsService {
   private statsByDay(history: War[], day: number):string {
     const wins = history.filter(r => r.date.getDay() == day && r.result == WarResult.Win).length;
     const loses = history.filter(r => r.date.getDay() == day && r.result == WarResult.Lose).length;
-    
-    return `${wins}-${loses}`;
+    const winrate = (wins+loses) > 0 ? Math.round(wins / (wins+loses) * 100) : 0;
+    return `${wins}-${loses} (${winrate}%)`;
   }
 
-  getTeammateStats(player: Player, playerBattles: War[]): TeammateStats[] {
+  private getTeammateStats(player: Player, playerBattles: War[]): TeammateStats[] {
     let teammates: TeammateStats[] = [];
 
     playerBattles.forEach(pb => {
@@ -67,5 +69,17 @@ export class PlayerStatsService {
     });
 
     return teammates;
+  }
+
+  private getOpponentStats(playerBattles: War[]): OpponentStats[] {
+    let stats: OpponentStats[] = [];
+
+    playerBattles.forEach(w => {
+
+      const stat = new OpponentStats(w.opponent, w.season, w.opponentRank, w.result);
+      stats.push(stat);
+    });
+
+    return stats;
   }
 }

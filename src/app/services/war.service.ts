@@ -40,7 +40,9 @@ export class WarService {
           const teamScore = parseInt(ts.score);
           const result = ts.result === 'win' ? WarResult.Win : WarResult.Lose;
           const season = parseInt(ts.season);
-          let war = new War(++id, date, teamScore, result, season);
+          const opponent = ts.opponent;
+          const rank = ts.rank ? parseInt(ts.rank) : 9999;
+          let war = new War(++id, date, teamScore, result, season, opponent, rank);
 
           playerScores.filter(ps => ps.day == ts.day).forEach((ps) => {
             const score = parseInt(ps.score);
@@ -102,8 +104,10 @@ export class WarService {
       const players = arr[header.indexOf('Players')].trim();
       const result = arr[header.indexOf('Outcome')].trim();
       const season = arr[header.indexOf('Season')].trim();
+      const opponent = arr[header.indexOf('Opponent')].trim();
+      const rank = arr[header.indexOf('Rank')].trim();
 
-      const teamScore = new TeamScoreCsvModel(day, score, players, result, season);
+      const teamScore = new TeamScoreCsvModel(day, score, players, result, season, opponent, rank);
       teamScores.push(teamScore);
     }
 
@@ -124,5 +128,7 @@ class TeamScoreCsvModel {
     public score: string,
     public players: string,
     public result: string,
-    public season: string) { }
+    public season: string,
+    public opponent: string,
+    public rank: string) { }
 }

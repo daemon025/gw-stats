@@ -13,6 +13,7 @@ export class PlayerStats {
   resultOnSat: string;
   resultOnSun: string;
   teammateStats: TeammateStats[];
+  opponentStats: OpponentStats[];
 
   get total(): number {
       return this.wins + this.loses;
@@ -28,6 +29,10 @@ export class PlayerStats {
 
   get top3TeammatesByGamesPlayed(): TeammateStats[] {
     return this.teammateStats.sort((a, b) => b.totalGames - a.totalGames || b.winrate - a.winrate).slice(0, 5);
+  }
+
+  get top5Opponents(): OpponentStats[] {
+    return this.opponentStats.sort((a, b) => a.rank - b.rank).slice(0, 5);
   }
 }
 
@@ -53,5 +58,13 @@ export class TeammateStats {
 
   get totalGames(): number {
     return this.gamesPlayed;
+  }
+}
+
+export class OpponentStats {
+  /**
+   *
+   */
+  constructor(public name: string, public season: number, public rank: number, public warResult: WarResult) {
   }
 }

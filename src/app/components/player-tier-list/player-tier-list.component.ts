@@ -22,7 +22,7 @@ export class PlayerTierListComponent implements OnInit {
     forkJoin(this.playerService.getPlayers(true), this.warService.getWarhistory()).subscribe(([players, history]) => {
       let data: Survivor[] = [];
       players.forEach(p => {
-        const battles = history.filter(h => h.result == WarResult.Win && h.participants.some(pr => pr.player.id == p.id));
+        const battles = history.filter(h => h.participants.some(pr => pr.player.id == p.id));
         const nestedScores = battles.map(w => w.participants);
         const scores = ([] as PlayerScore[]).concat(...nestedScores).filter(ps => ps.player.id == p.id);
         const vpScores = scores.map(ps => ps.score).sort((a,b) => b - a).slice(0, this.LastResultsToTake);
@@ -30,7 +30,7 @@ export class PlayerTierListComponent implements OnInit {
         const avg = vpScores.length > 0 ? (sum / vpScores.length) : 0;
 
         const rarity = Math.floor(avg / 100) - 1;
-        console.log(`Player: ${p.name} with average score of ${avg} has ${rarity} stars...`);
+        console.log(`Player: ${p.name} with average score of ${avg} has ${rarity+1} stars...${JSON.stringify(vpScores)}`);
         const team = 0;
         const player = new Survivor(p.id, p.name, p.countryCode, rarity, p.profileIcon, team, avg);
         data.push(player);

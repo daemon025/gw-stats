@@ -18,9 +18,9 @@
 }
 
 .match-container .match-score .outcome-win {
-    color: #6A8A5A;
+    color: green;
 }
 
 .match-container .match-score .outcome-lose {
-    color: #8A4F50;
+    color: red;
 }
