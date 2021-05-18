@@ -43,4 +43,17 @@ export class PlayerComponent implements OnInit, OnDestroy {
     this.routeSub$?.unsubscribe();
     this.playersSub$?.unsubscribe();
   } 
+
+  getMSARank(season: number) {
+    switch (season) {
+      case 6:
+        return 89;
+      case 7:
+        return 49;
+      case 8:
+        return 33;
+      default:
+        return null;
+    }
+  }
 }

@@ -3,24 +3,29 @@
     display: inline-flex;
 }
 
-.match-container .match-outcome {
-    flex: 1;
-    /* color: white; */
-}
-
 .match-container .match-date {
     flex: 2;
     /* color: white; */
 }
 
-.match-container .match-score {
+.match-container .match-opponent {
+    flex: 2;
+    /* color: white; */
+}
+
+.match-participants {
     flex: 1;
 }
 
-.match-container .match-score .outcome-win {
+.match-container .match-outcome {
+    flex: 1;
+    /* color: white; */
+}
+
+.match-container .match-outcome .outcome-win {
     color: green;
 }
 
-.match-container .match-score .outcome-lose {
+.match-container .match-outcome .outcome-lose {
     color: red;
 }

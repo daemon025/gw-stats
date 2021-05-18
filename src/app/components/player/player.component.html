@@ -51,7 +51,7 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let opponent of player.stats.top5Opponents">
-                                <td style="text-align: right;">{{opponent.rank}}</td>
+                                <td style="text-align: right;">{{opponent.rank}} ({{getMSARank(opponent.season)}})</td>
                                 <td style="text-align: right;">{{opponent.name}}</td>
                                 <td style="text-align: right;">{{opponent.season}}</td>
                                 <td style="text-align: right;">{{opponent.warResult == 1 ? 'Victory' : 'Defeat'}}</td>

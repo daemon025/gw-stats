@@ -9,7 +9,7 @@
     <mat-expansion-panel *ngFor="let season of seasons" hideToggle>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                Season {{ season.name }}
+                {{ season.name }}
             </mat-panel-title>
             <mat-panel-description>
                 {{ season.wins }} - {{ season.loses }} | VP: {{ season.victoryPoints }}
@@ -18,9 +18,10 @@
         <mat-selection-list role="list">
             <mat-list-item role="listitem" *ngFor="let match of season.matches">
                 <div class="match-container">
-                    <div class="match-outcome">{{ match.date | date: 'shortDate' }}</div>
-                    <div class="match-date">{{ match.opponent }}</div>
-                    <div class="match-score">
+                    <div class="match-date">{{ match.date | date: 'yyyy-MM-dd' }}</div>
+                    <div class="match-opponent">{{ match.opponent }}</div>
+                    <div class="match-participants">{{ match.participants.length }}/10</div>
+                    <div class="match-outcome">
                         <span [ngClass]="{ 'outcome-win': outcomeTypes.Win === match.result, 'outcome-lose': outcomeTypes.Lose === match.result  }">{{ match.score }}</span>
                     </div>
                 </div>
