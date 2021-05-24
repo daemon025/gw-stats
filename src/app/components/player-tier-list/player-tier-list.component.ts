@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PlayerTierListComponent implements OnInit {
   private readonly LastResultsToTake = 2;
-  private readonly AdjustingNumber = 0;
+  private readonly AdjustingNumber = -15;
 
   survivors: Survivor[];
   constructor(private playerService: PlayerService, private warService: WarService, private router: Router) { }
