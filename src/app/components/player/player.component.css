@@ -3,6 +3,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    height: calc(100% - 64px);
+    overflow: auto;
 }
 
 .grid-container>div {
@@ -24,7 +26,8 @@
 
 .grid-container .generic-info {
     width: 100%;
-    background-color: blueviolet;
+    background-color: #2f3136;
+    color: white;
 }
 
 .grid-container .day-statistics {
@@ -40,4 +43,8 @@
 .grid-container .stats-container {
     width: 100%;
     background-color: coral;
+}
+
+.bordered {
+    border: solid 1px white;
 }

@@ -2,8 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 import { WarService } from '../../services/war.service';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, forkJoin } from 'rxjs';
 import { Player } from '../../models/player';
+import { PlayerInfo } from './player-info';
+import { WarResult, War } from '../../models/war';
+import { PlayerStatsService } from '../../services/player-stats.service';
 
 @Component({
   selector: 'app-player',
@@ -13,23 +16,44 @@ import { Player } from '../../models/player';
 export class PlayerComponent implements OnInit, OnDestroy {
   private routeSub$: Subscription;
   private playersSub$: Subscription;
+  private players: Player[];
+  private history: War[];
 
-  player: Player | undefined;
-  
-  constructor(private route: ActivatedRoute, private playerService: PlayerService, private warService: WarService) { }
+  player: PlayerInfo;
+
+  constructor(private route: ActivatedRoute, private playerService: PlayerService, private warService: WarService, private statsService: PlayerStatsService) { }
 
   ngOnInit(): void {
     this.routeSub$ = this.route.params.subscribe(params => {
       const id = parseInt(params['id']);
-      this.playersSub$ = this.playerService.getPlayers(false).subscribe(r => {
-        this.player = r.find(p => p.id == id);
+      forkJoin(this.playerService.getPlayers(false), this.warService.getWarhistory()).subscribe(([players, history]) => {
+        this.players = players;
+        this.history = history;
+
+        const player: Player | undefined = this.players.find(p => p.id == id);
+        if (player) {
+          const stats = this.statsService.getPlayerStats(player, history);
+          this.player = new PlayerInfo(player, stats);
+        }
       });
     });
   }
-
+    
   ngOnDestroy() {
     this.routeSub$?.unsubscribe();
     this.playersSub$?.unsubscribe();
-  }
+  } 
 
+  getMSARank(season: number) {
+    switch (season) {
+      case 6:
+        return 89;
+      case 7:
+        return 49;
+      case 8:
+        return 33;
+      default:
+        return null;
+    }
+  }
 }

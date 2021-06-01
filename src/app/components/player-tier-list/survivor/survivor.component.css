@@ -1,0 +1,178 @@
+.survivor-rarity-common {
+    border-color: #766F69 !important;
+}
+
+.survivor-rarity-uncommon {
+    border-color: #8C7B52 !important;
+}
+
+.survivor-rarity-rare {
+    border-color: #63772B !important;
+}
+
+.survivor-rarity-epic {
+    border-color: #538A93 !important;
+}
+
+.survivor-rarity-legendary,
+.survivor-rarity-elite,
+.survivor-rarity-elite2,
+.survivor-rarity-elite3,
+.survivor-rarity-elite4,
+.survivor-rarity-elite5 {
+    border-color: #C29A26 !important;
+}
+
+.survivor-panel {
+    width: 160px;
+    border: solid 2px;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: #241F1D;
+}
+
+.survivor-panel .top-badge-container {
+    display: inline-flex;
+    width: 160px;
+    position: absolute;
+    margin-top: -20px;
+    font-size: 14px;
+}
+
+.survivor-panel .top-badge-container .hero-label,
+.survivor-panel .top-badge-container .alt-hero-label {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 0px 4px;
+    margin-left: 2px;
+}
+
+.survivor-panel .top-badge-container .hero-label {
+    color: black;
+    background-color: #A1ACAD;
+}
+
+.survivor-panel .top-badge-container .alt-hero-label {
+    color: white;
+    background-color: #A31056;
+}
+
+.survivor-panel .top-badge-container .team {
+    width: 100%;
+}
+
+.survivor-panel .top-badge-container .team-name {
+    background-color: #6E8408;
+    color: white;
+    float: right;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 0px 4px;
+    margin-right: 2px;
+}
+
+.survivor-panel .header {
+    height: 36px;
+    display: inline-flex;
+}
+
+.survivor-panel .header .survivor-class {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+}
+
+.survivor-panel .header .survivor-class img {
+    height: 24px;
+    width: 24px;
+}
+
+.survivor-panel .header .survivor-name {
+    color: white;
+    width: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 16px;
+    padding-left: 4px;
+}
+
+.survivor-panel .body {
+    height: 160px;
+    width: 160px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.survivor-panel .body .level-container {
+    display: inline-flex;
+    height: 32px;
+}
+
+.survivor-panel .body .level-container .level {
+    color: white;
+    background-color: grey;
+    height: 32px;
+    width: 32px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.survivor-panel .body .level-container .stars {
+    width: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.survivor-panel .body .level-container .stars .grey-icon {
+    color: #D0D8E0;
+}
+
+.survivor-panel .body .level-container .stars .pink-icon {
+    color: #E565B5;
+}
+
+.survivor-panel .body .badge-container {
+    height: 32px;
+    width: 32px;
+    color: white;
+    background-color: black;
+    margin-top: 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.survivor-panel .body .stats-container {
+    height: 24px;
+    width: 160px;
+    margin-top: 128px;
+}
+
+.survivor-panel .body .survivor-image {
+    height: 224px;
+    width: 160px;
+}
+
+.survivor-panel .footer {
+    height: 32px;
+    display: inline-flex;
+}
+
+.survivor-panel .survivor-trait {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.survivor-panel .survivor-trait img {
+    height: 24px;
+    width: 24px;
+}
