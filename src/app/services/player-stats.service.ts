@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerStats, TeammateStats, OpponentStats } from '../models/player-stats';
+import { PlayerStats, TeammateStats, OpponentStats, WinLoseStats } from '../models/player-stats';
 import { Player } from '../models/player';
 import { War, WarResult } from '../models/war';
 
@@ -13,8 +13,9 @@ export class PlayerStatsService {
   getPlayerStats(player: Player, history: War[]): PlayerStats {
     let stats = new PlayerStats();
     const playerBattles = history.filter(h => h.participants.some(pr => pr.player.id == player.id));
-    stats.wins = playerBattles.filter(h => h.result == WarResult.Win).length;
-    stats.loses = playerBattles.filter(h => h.result == WarResult.Lose).length;
+    const wins = playerBattles.filter(h => h.result == WarResult.Win).length;
+    const loses = playerBattles.filter(h => h.result == WarResult.Lose).length;
+    stats.winLoseStats = new WinLoseStats(wins, loses);
     stats.winStreak = this.calculateWinStreak(playerBattles, player);
 
     stats.resultOnTue = this.statsByDay(playerBattles, 2);

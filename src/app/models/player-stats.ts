@@ -2,8 +2,7 @@ import { Player } from "./player";
 import { WarResult } from "./war";
 
 export class PlayerStats {
-  wins: number;
-  loses: number;
+  winLoseStats: WinLoseStats;
   winStreak: number;
 
   resultOnTue: string;
@@ -15,16 +14,12 @@ export class PlayerStats {
   teammateStats: TeammateStats[];
   opponentStats: OpponentStats[];
 
-  get total(): number {
-      return this.wins + this.loses;
-  }
-
   get winrate(): number {
-    return this.total > 0 ? Math.round(this.wins / (this.total) * 100) : 0;
+    return this.winLoseStats.winrate;
   }
 
   get top3TeammatesByWinrate(): TeammateStats[] {
-    return this.teammateStats.filter(t => t.player.active).sort((a, b) => b.winrate - a.winrate || b.totalGames - a.totalGames).slice(0, 5);
+    return this.teammateStats.filter(t => t.player.active || t.totalGames >= 5).sort((a, b) => b.winrate - a.winrate || b.totalGames - a.totalGames).slice(0, 5);
   }
 
   get top3TeammatesByGamesPlayed(): TeammateStats[] {
@@ -33,6 +28,19 @@ export class PlayerStats {
 
   get top5Opponents(): OpponentStats[] {
     return this.opponentStats.sort((a, b) => a.rank - b.rank).slice(0, 5);
+  }
+}
+
+export class WinLoseStats {
+  /**
+   *
+   */
+  constructor(public wins: number, public loses: number) {
+  }
+
+  get winrate() {
+    const total = this.wins + this.loses;
+    return total > 0 ? Math.round(this.wins / (total) * 100) : 0;
   }
 }
 

@@ -96,15 +96,14 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 16px;
+    font-size: 15px;
     padding-left: 4px;
 }
 
 .survivor-panel .body {
     height: 160px;
     width: 160px;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-color: #2F3136;
 }
 
 .survivor-panel .body .level-container {

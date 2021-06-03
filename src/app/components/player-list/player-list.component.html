@@ -4,8 +4,7 @@
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Player </th>
             <td mat-cell *matCellDef="let element">
-                <span class="flag-icon flag-icon-{{element.countryCode.toLowerCase()}} flag-icon-squared flag-container"></span>
-                <a routerLink="/player/{{element.id}}">{{element.name}}</a>
+                <span class="flag-icon flag-icon-{{element.countryCode.toLowerCase()}} flag-icon-squared flag-container"></span> {{element.name}}
             </td>
         </ng-container>
 
