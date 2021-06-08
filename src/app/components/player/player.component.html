@@ -44,17 +44,32 @@
                 <div style="padding: 4px;">
                     <table>
                         <thead>
-                            <th>Rank</th>
-                            <th>Opponent</th>
-                            <th>Season</th>
-                            <th>Result</th>
+                            <tr style="text-align: right;border-bottom: solid 1px;border-top: solid 1px;">
+                                <th></th>
+                                <th>Rank</th>
+                                <th>Opponent</th>
+                                <th>Season</th>
+                                <th>Result</th>
+                            </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let opponent of player.stats.top5Opponents">
-                                <td style="text-align: right;">{{opponent.rank}} ({{getMSARank(opponent.season)}})</td>
+                                <td>
+                                    <div style="display: flex;">
+                                        <img *ngIf="opponent.warResult == 1 && opponent.rank > opponent.opponentRank" height="16" width="16" src="https://cdn0.iconfinder.com/data/icons/trends-1/256/icon-1.png" />
+                                        <img *ngIf="opponent.warResult != 1 && opponent.rank < opponent.opponentRank" height="16" width="16" src="https://cdn0.iconfinder.com/data/icons/trends-1/256/icon-9.png" />
+                                    </div>
+                                </td>
+                                <td style="text-align: right;">
+                                    {{opponent.opponentRank}} ({{opponent.rank}})
+                                </td>
                                 <td style="text-align: right;">{{opponent.name}}</td>
                                 <td style="text-align: right;">{{opponent.season}}</td>
-                                <td style="text-align: right;">{{opponent.warResult == 1 ? 'Victory' : 'Defeat'}}</td>
+                                <td style="text-align: right;">
+                                    <span class="result" [ngClass]="{'result-victory': opponent.warResult == 1, 'result-defeat': opponent.warResult != 1}">
+                                        {{opponent.warResult == 1 ? 'Victory': 'Defeat'}}
+                                    </span>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -64,9 +79,30 @@
         </div>
 
     </div>
-    <div class="margin-20 day-statistics">
+    <div class="margin-20 history-statistics">
         <div>
-            <div> chart placeholder</div>
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Opponent</th>
+                        <th>VP</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let match of player.history">
+                        <td>{{match.date | date: 'yyyy-MM-dd'}}</td>
+                        <td>{{match.opponent}}</td>
+                        <td>{{getPlayerVP(match)}}</td>
+                        <td>
+                            <span class="result" [ngClass]="{'result-victory': match.result == 1, 'result-defeat': match.result != 1}">
+                                {{match.result == 1 ? 'Victory': 'Defeat'}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="margin-20 chart-container">

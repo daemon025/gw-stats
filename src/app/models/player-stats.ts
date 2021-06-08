@@ -27,7 +27,7 @@ export class PlayerStats {
   }
 
   get top5Opponents(): OpponentStats[] {
-    return this.opponentStats.sort((a, b) => a.rank - b.rank).slice(0, 5);
+    return this.opponentStats.sort((a, b) => a.opponentRank - b.opponentRank).slice(0, 10);
   }
 }
 
@@ -73,6 +73,6 @@ export class OpponentStats {
   /**
    *
    */
-  constructor(public name: string, public season: number, public rank: number, public warResult: WarResult) {
+  constructor(public name: string, public season: number, public opponentRank: number, public warResult: WarResult, public rank: number) {
   }
 }

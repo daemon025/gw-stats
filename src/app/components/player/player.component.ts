@@ -33,7 +33,7 @@ export class PlayerComponent implements OnInit, OnDestroy {
         const player: Player | undefined = this.players.find(p => p.id == id);
         if (player) {
           const stats = this.statsService.getPlayerStats(player, history);
-          this.player = new PlayerInfo(player, stats);
+          this.player = new PlayerInfo(player, stats, history);
         }
       });
     });
@@ -42,18 +42,10 @@ export class PlayerComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeSub$?.unsubscribe();
     this.playersSub$?.unsubscribe();
-  } 
+  }
 
-  getMSARank(season: number) {
-    switch (season) {
-      case 6:
-        return 89;
-      case 7:
-        return 49;
-      case 8:
-        return 33;
-      default:
-        return null;
-    }
+  getPlayerVP(match: War) {
+    const stats = match.participants.find(p => p.player.name == this.player.name);
+    return stats ? stats.score : 0;
   }
 }

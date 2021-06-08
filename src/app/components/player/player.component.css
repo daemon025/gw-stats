@@ -30,21 +30,42 @@
     color: white;
 }
 
-.grid-container .day-statistics {
+.grid-container .history-statistics {
     width: 100%;
-    background-color: brown;
+    background-color: #2f3136;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.grid-container .history-statistics table.history-table>tbody>tr>td {
+    border-top: solid 1px white;
+}
+
+.grid-container .history-statistics table.history-table>tbody>tr>td {
+    padding: 4px;
 }
 
 .grid-container .chart-container {
     width: 100%;
-    background-color: chartreuse;
+    background-color: #2f3136;
 }
 
 .grid-container .stats-container {
     width: 100%;
-    background-color: coral;
+    background-color: #2f3136;
 }
 
 .bordered {
     border: solid 1px white;
+}
+
+.result {}
+
+.result.result-victory {
+    color: #05C679;
+}
+
+.result.result-defeat {
+    color: #F95249;
 }

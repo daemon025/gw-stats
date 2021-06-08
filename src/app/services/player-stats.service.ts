@@ -77,10 +77,25 @@ export class PlayerStatsService {
 
     playerBattles.forEach(w => {
 
-      const stat = new OpponentStats(w.opponent, w.season, w.opponentRank, w.result);
+      const stat = new OpponentStats(w.opponent, w.season, w.opponentRank, w.result, this.getMSARank(w.season));
       stats.push(stat);
     });
 
     return stats;
+  }
+
+  private getMSARank(season: number) {
+    switch (season) {
+      case 6:
+        return 89;
+      case 7:
+        return 49;
+      case 8:
+        return 33;
+        case 9:
+        return 43;
+      default:
+        return 9999;
+    }
   }
 }
