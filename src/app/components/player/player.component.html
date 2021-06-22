@@ -56,8 +56,8 @@
                             <tr *ngFor="let opponent of player.stats.top5Opponents">
                                 <td>
                                     <div style="display: flex;">
-                                        <img *ngIf="opponent.warResult == 1 && opponent.rank > opponent.opponentRank" height="16" width="16" src="https://cdn0.iconfinder.com/data/icons/trends-1/256/icon-1.png" />
-                                        <img *ngIf="opponent.warResult != 1 && opponent.rank < opponent.opponentRank" height="16" width="16" src="https://cdn0.iconfinder.com/data/icons/trends-1/256/icon-9.png" />
+                                        <img *ngIf="opponent.warResult == 1 && opponent.rank > opponent.opponentRank" height="16" width="16" src="/assets/miscellaneous/arrow-up.png" />
+                                        <img *ngIf="opponent.warResult != 1 && opponent.rank < opponent.opponentRank" height="16" width="16" src="/assets/miscellaneous/arrow-down.png" />
                                     </div>
                                 </td>
                                 <td style="text-align: right;">

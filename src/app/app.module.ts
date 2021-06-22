@@ -24,6 +24,7 @@ import { ProfileIconComponent } from './components/profile-icon/profile-icon.com
 import { PlayerTierListComponent } from './components/player-tier-list/player-tier-list.component';
 import { SurvivorComponent } from './components/player-tier-list/survivor/survivor.component';
 import { SurvivorPipe } from './components/player-tier-list/survivor.pipe';
+import { WeekdaysStatsComponent } from './components/weekdays-stats/weekdays-stats.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SurvivorPipe } from './components/player-tier-list/survivor.pipe';
     ProfileIconComponent,
     PlayerTierListComponent,
     SurvivorComponent,
-    SurvivorPipe
+    SurvivorPipe,
+    WeekdaysStatsComponent
   ],
   imports: [
     BrowserModule,
