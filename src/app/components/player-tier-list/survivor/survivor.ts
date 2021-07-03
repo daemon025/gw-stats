@@ -1,24 +1,29 @@
 import { ProfileIcon } from "../../../models/player";
+import { DaysStats, WinLoseStats } from "../../../models/player-stats";
 
 export class Survivor {
     id: number;
     name: string;
-    image: string;
     country: string;
     rarity: SurvivorRarity;
     profileIcon: ProfileIcon;
     team: number;
     avg: number;
+    winLoseStats: WinLoseStats;
+    daysStats: DaysStats[];
 
-    constructor(id: number, name: string, country: string, rarity: number, profileIcon: ProfileIcon, team: number, avg: number) {
+    constructor(id: number, name: string, country: string, rarity: number, profileIcon: ProfileIcon, team: number, avg: number, 
+        winLoseStats: WinLoseStats, daysStats: DaysStats[]) {
+
         this.id = id;
         this.name = name;
         this.country = country.toLowerCase();
         this.rarity =  (rarity >= 0 ? rarity : 0) as SurvivorRarity;
-        this.image = 'https://cdn.discordapp.com/avatars/700755950427963473/59f16c95794ba16ca7d29fe927bb7a2a.png?size=256';
         this.profileIcon = profileIcon;
         this.team = team;
         this.avg = avg;
+        this.winLoseStats = winLoseStats;
+        this.daysStats = daysStats;
     }
 
     get starColors(): string[] {

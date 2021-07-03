@@ -1,1 +1,6 @@
-<p>weekdays-stats works!</p>
+<div class="stats-container">
+    <div *ngFor="let dayStats of stats" class="day" [style.backgroundColor]="getBackgroundColor(dayStats.winLoseStats)">
+        {{ dayStats.day }}
+        <br/> {{ dayStats.winLoseStats.wins }} - {{ dayStats.winLoseStats.loses }}
+    </div>
+</div>

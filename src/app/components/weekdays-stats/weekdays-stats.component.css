@@ -1,0 +1,19 @@
+:host {
+    color: white;
+    font-size: 12px;
+}
+
+.stats-container {
+    display: grid;
+    justify-content: center;
+    gap: 2px;
+    grid-template-rows: 36px 36px 36px;
+    grid-template-columns: 48px 48px 48px;
+}
+
+.stats-container .day {
+    text-align: center;
+    border: solid 1px white;
+    border-radius: 5px;
+    line-height: 16px;
+}

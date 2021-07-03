@@ -147,10 +147,18 @@
     border-bottom-right-radius: 5px;
 }
 
+.survivor-panel .body .weekday-stats-container {
+    padding-top: 16px;
+}
+
 .survivor-panel .body .stats-container {
     height: 24px;
     width: 160px;
-    margin-top: 128px;
+    color: white;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-top: solid;
 }
 
 .survivor-panel .body .survivor-image {

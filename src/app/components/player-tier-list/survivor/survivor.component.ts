@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { WinLoseStats } from '../../../models/player-stats';
 import { Survivor } from './survivor';
 
 @Component({
@@ -12,9 +13,5 @@ export class SurvivorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  getUrl(survivor: Survivor): string {
-    return `url('${survivor.image}')`;
   }
 }

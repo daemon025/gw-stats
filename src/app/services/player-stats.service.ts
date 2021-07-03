@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PlayerStats, TeammateStats, OpponentStats, WinLoseStats } from '../models/player-stats';
+import { PlayerStats, TeammateStats, OpponentStats, WinLoseStats, DaysStats } from '../models/player-stats';
 import { Player } from '../models/player';
 import { War, WarResult } from '../models/war';
 
@@ -7,7 +7,6 @@ import { War, WarResult } from '../models/war';
   providedIn: 'root'
 })
 export class PlayerStatsService {
-
   constructor() { }
 
   getPlayerStats(player: Player, history: War[]): PlayerStats {
@@ -17,18 +16,32 @@ export class PlayerStatsService {
     const loses = playerBattles.filter(h => h.result == WarResult.Lose).length;
     stats.winLoseStats = new WinLoseStats(wins, loses);
     stats.winStreak = this.calculateWinStreak(playerBattles, player);
-
-    stats.resultOnTue = this.statsByDay(playerBattles, 2);
-    stats.resultOnWed = this.statsByDay(playerBattles, 3);
-    stats.resultOnThu = this.statsByDay(playerBattles, 4);
-    stats.resultOnFri = this.statsByDay(playerBattles, 5);
-    stats.resultOnSat = this.statsByDay(playerBattles, 6);
-    stats.resultOnSun = this.statsByDay(playerBattles, 0);
-
+    stats.daysStats = this.getDaysStats(player, playerBattles);
     stats.teammateStats = this.getTeammateStats(player, playerBattles);
     stats.opponentStats = this.getOpponentStats(playerBattles);
 
     return stats;
+  }
+
+  getPlayerWinLoseStats(player: Player, history: War[]): WinLoseStats {
+    const playerBattles = history.filter(h => h.participants.some(pr => pr.player.id == player.id));
+    const wins = playerBattles.filter(h => h.result == WarResult.Win).length;
+    const loses = playerBattles.filter(h => h.result == WarResult.Lose).length;
+
+    return new WinLoseStats(wins, loses);
+  }
+
+  getDaysStats(player: Player, history: War[]) : DaysStats[] {
+    let result: DaysStats[] = [];
+    const playerBattles = history.filter(h => h.participants.some(pr => pr.player.id == player.id));
+
+    result.push(new DaysStats('Tue', this.statsByDay(playerBattles, 2)));
+    result.push(new DaysStats('Wed', this.statsByDay(playerBattles, 3)));
+    result.push(new DaysStats('Thu', this.statsByDay(playerBattles, 4)));
+    result.push(new DaysStats('Fri', this.statsByDay(playerBattles, 5)));
+    result.push(new DaysStats('Sat', this.statsByDay(playerBattles, 6)));
+    result.push(new DaysStats('Sun', this.statsByDay(playerBattles, 0)));
+    return result;
   }
   
   
@@ -46,11 +59,11 @@ export class PlayerStatsService {
     return streak;
   }
 
-  private statsByDay(history: War[], day: number):string {
+  private statsByDay(history: War[], day: number): WinLoseStats {
     const wins = history.filter(r => r.date.getDay() == day && r.result == WarResult.Win).length;
     const loses = history.filter(r => r.date.getDay() == day && r.result == WarResult.Lose).length;
-    const winrate = (wins+loses) > 0 ? Math.round(wins / (wins+loses) * 100) : 0;
-    return `${wins}-${loses} (${winrate}%)`;
+    
+    return new WinLoseStats(wins, loses);
   }
 
   private getTeammateStats(player: Player, playerBattles: War[]): TeammateStats[] {

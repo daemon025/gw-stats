@@ -5,14 +5,9 @@ export class PlayerStats {
   winLoseStats: WinLoseStats;
   winStreak: number;
 
-  resultOnTue: string;
-  resultOnWed: string;
-  resultOnThu: string;
-  resultOnFri: string;
-  resultOnSat: string;
-  resultOnSun: string;
-  teammateStats: TeammateStats[];
-  opponentStats: OpponentStats[];
+  daysStats: DaysStats[] = [];
+  teammateStats: TeammateStats[] = [];
+  opponentStats: OpponentStats[] = [];
 
   get winrate(): number {
     return this.winLoseStats.winrate;
@@ -75,4 +70,9 @@ export class OpponentStats {
    */
   constructor(public name: string, public season: number, public opponentRank: number, public warResult: WarResult, public rank: number) {
   }
+}
+
+export class DaysStats {
+  
+  constructor(public day: string, public winLoseStats: WinLoseStats) { }
 }

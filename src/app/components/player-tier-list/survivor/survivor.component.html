@@ -18,9 +18,12 @@
                 <mat-icon *ngFor="let color of survivor.starColors" [class]="color">star_rate</mat-icon>
             </div>
         </div>
-        <!-- <div class="stats-container">
-            <img src="https://cdn-5ce4a003f911c80f50818892.closte.com/wp-content/uploads/2010/10/pure-css-progress-bar.png" width="160px" height="24px" />
-        </div> -->
+        <div class="weekday-stats-container">
+            <gw-weekdays-stats [stats]="survivor.daysStats"></gw-weekdays-stats>
+        </div>
+        <div class="stats-container">
+            <span style="padding-top: 8px;">{{ survivor.winLoseStats.wins }} - {{ survivor.winLoseStats.loses }} | {{ survivor.winLoseStats.winrate }}%</span>
+        </div>
     </div>
     <div class="footer">
         <!-- <div class="survivor-trait" *ngFor="let trait of survivor.traits">
