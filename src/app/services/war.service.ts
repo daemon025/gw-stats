@@ -4,15 +4,12 @@ import { PlayerService } from './player.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, forkJoin, empty } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WarService {
-  private proxyUrl = ''; //'https://cors-anywhere.herokuapp.com/';
-  private playerScoreUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrOl6_y7SWwOEcXY3gUhhk4fCHF3M10DTmkNIvUqRFx38kBbEyhNujw56a7GkBGtPC2cCqmYlLYMk9/pub?gid=526121686&single=true&output=csv';
-  private teamScoreUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrOl6_y7SWwOEcXY3gUhhk4fCHF3M10DTmkNIvUqRFx38kBbEyhNujw56a7GkBGtPC2cCqmYlLYMk9/pub?gid=37365078&single=true&output=csv';
-
   private warResults: War[] = [];
 
   constructor(private playerService: PlayerService, private http: HttpClient) { }
@@ -22,14 +19,14 @@ export class WarService {
       return of(this.warResults);
 
     const playerPromise = this.playerService.getPlayers(false);
-    const playerScorePromise = this.http.get(`${this.proxyUrl}${this.playerScoreUrl}`, {
+    const playerScorePromise = this.http.get(environment.playerScoresUrl, {
       responseType: 'text'
     });
-    const teamScorePromise = this.http.get(`${this.proxyUrl}${this.teamScoreUrl}`, {
+    const teamScorePromise = this.http.get(environment.teamScoresUrl, {
       responseType: 'text'
     });
 
-    return forkJoin(playerPromise, playerScorePromise, teamScorePromise)
+    return forkJoin([playerPromise, playerScorePromise, teamScorePromise])
       .pipe(map(([players, playerScoresCsv, teamScoresCsv]) => {
         const warResults: War[] = [];
         const playerScores = this.parsePlayerScores(playerScoresCsv);

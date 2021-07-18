@@ -1,1 +1,17 @@
-<p>team-top-list works!</p>
+<div *ngIf="teamStats" class="top-score-container">
+    <div *ngFor="let stats of teamStats" class="team-stats-container">
+        <table>
+            <thead>
+                <tr class="header-row">
+                    <td colspan="2">Top for team of {{stats.noOfPlayers}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let score of stats.topScores; let i = index">
+                    <td style="padding-left: 4px;">{{i+1}}.</td>
+                    <td style="text-align: right; padding-right: 4px;">{{score}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

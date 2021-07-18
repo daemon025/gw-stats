@@ -3,13 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Player, ProfileIcon } from '../models/player';
 import { Observable, of, empty } from 'rxjs';
 import { map, catchError, shareReplay } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlayerService {
-  private proxyUrl = '';//'https://cors-anywhere.herokuapp.com/';
-  private playerListUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTrOl6_y7SWwOEcXY3gUhhk4fCHF3M10DTmkNIvUqRFx38kBbEyhNujw56a7GkBGtPC2cCqmYlLYMk9/pub?gid=0&single=true&output=csv';
+  private playerListUrl = environment.playersUrl;
   private players: Player[] = [];
 
   constructor(private http: HttpClient) { }
@@ -18,7 +18,7 @@ export class PlayerService {
     if (this.players.length > 0)
       return of(onlyActive ? this.players.filter(p => p.active) : this.players);
 
-    const requestUrl = `${this.proxyUrl}${this.playerListUrl}`;
+    const requestUrl = this.playerListUrl;
 
     return this.http.get(requestUrl, {
       responseType: 'text'

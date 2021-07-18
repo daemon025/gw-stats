@@ -24,7 +24,7 @@ export class PlayerTierListComponent implements OnInit {
     private statsService: PlayerStatsService) { }
 
   ngOnInit(): void {
-    forkJoin(this.playerService.getPlayers(true), this.warService.getWarhistory()).subscribe(([players, history]) => {
+    forkJoin([this.playerService.getPlayers(true), this.warService.getWarhistory()]).subscribe(([players, history]) => {
       let data: Survivor[] = [];
       players.forEach(p => {
         const battles = history.filter(h => h.participants.some(pr => pr.player.id == p.id));
