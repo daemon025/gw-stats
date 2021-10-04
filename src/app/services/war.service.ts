@@ -38,8 +38,7 @@ export class WarService {
           const result = ts.result === 'win' ? WarResult.Win : WarResult.Lose;
           const season = parseInt(ts.season);
           const opponent = ts.opponent;
-          const rank = ts.rank ? parseInt(ts.rank) : 9999;
-          let war = new War(++id, date, teamScore, result, season, opponent, rank);
+          let war = new War(++id, date, teamScore, result, season, opponent);
 
           playerScores.filter(ps => ps.day == ts.day).forEach((ps) => {
             const score = parseInt(ps.score);

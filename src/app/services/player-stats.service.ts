@@ -90,7 +90,7 @@ export class PlayerStatsService {
 
     playerBattles.forEach(w => {
 
-      const stat = new OpponentStats(w.opponent, w.season, w.opponentRank, w.result, this.getMSARank(w.season));
+      const stat = new OpponentStats(w.opponent, w.season, w.result);
       stats.push(stat);
     });
 

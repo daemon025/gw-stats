@@ -33,7 +33,7 @@ export class PlayerListComponent implements OnInit {
         const player = new PlayerListModel(p.id, p.countryCode, p.name, wins, loses, winrate, winStreak, p.profileIcon);
         data.push(player);
       });
-      this.playerList = data.sort((a,b) => b.winrate - a.winrate);
+      this.playerList = data.sort((a,b) => b.winrate - a.winrate || b.wins - a.wins || b.winStreak - a.winStreak);
     });
   }
 

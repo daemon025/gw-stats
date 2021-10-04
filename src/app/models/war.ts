@@ -9,8 +9,7 @@ export class War {
         public score: number, 
         public result: WarResult,
         public season: number,
-        public opponent:string,
-        public opponentRank: number) {
+        public opponent:string) {
     }
 
     addPlayerScore(player: Player, score: number) {

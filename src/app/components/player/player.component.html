@@ -12,7 +12,7 @@
         <br/>
         <br/>
         <div>
-            <div>
+            <div style="padding-left: 24px;">
                 <div style="padding: 4px;">
                     <table>
                         <thead>
@@ -36,41 +36,6 @@
                                 <td style="text-align: right;">{{teammate.player.name}}</td>
                                 <td style="text-align: right;">{{teammate.totalGames}}</td>
                                 <td style="text-align: right;">{{teammate.winrate}}%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div style="padding-left: 24px;">
-                <div style="padding: 4px;">
-                    <table>
-                        <thead>
-                            <tr style="text-align: right;border-bottom: solid 1px;border-top: solid 1px;">
-                                <th></th>
-                                <th>Rank</th>
-                                <th>Opponent</th>
-                                <th>Season</th>
-                                <th>Result</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let opponent of player.stats.top5Opponents">
-                                <td>
-                                    <div style="display: flex;">
-                                        <img *ngIf="opponent.warResult == 1 && opponent.rank > opponent.opponentRank" height="16" width="16" src="assets/miscellaneous/arrow-up.png" />
-                                        <img *ngIf="opponent.warResult != 1 && opponent.rank < opponent.opponentRank" height="16" width="16" src="assets/miscellaneous/arrow-down.png" />
-                                    </div>
-                                </td>
-                                <td style="text-align: right;">
-                                    {{opponent.opponentRank}} ({{opponent.rank}})
-                                </td>
-                                <td style="text-align: right;">{{opponent.name}}</td>
-                                <td style="text-align: right;">{{opponent.season}}</td>
-                                <td style="text-align: right;">
-                                    <span class="result" [ngClass]="{'result-victory': opponent.warResult == 1, 'result-defeat': opponent.warResult != 1}">
-                                        {{opponent.warResult == 1 ? 'Victory': 'Defeat'}}
-                                    </span>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
